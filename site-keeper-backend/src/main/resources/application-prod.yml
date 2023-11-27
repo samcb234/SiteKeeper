@@ -1,0 +1,25 @@
+server:
+  port: 443
+  servlet:
+    context-path: /
+  ssl:
+    enabled: true
+    key-alias: tq-b5a2b119-5399-43e6-9c7d-f343810306db
+    key-store: "classpath:uswegpprojectdep2_myigt_com.jks"
+    key-store-password: password
+    key-password: 1234
+
+spring:
+  security:
+    saml2:
+      relyingparty:
+        registration:
+          skper:
+            identityprovider:
+              verification:
+                credentials:
+                  - certificate-location: "classpath:sson_skper.cer"
+              entity-id: https://sts.windows.net/eaad01fb-2d57-4fcb-a3da-338f671ebb86/
+              singlesignon:
+                sign-request: false
+                url: https://login.microsoftonline.com/eaad01fb-2d57-4fcb-a3da-338f671ebb86/saml2

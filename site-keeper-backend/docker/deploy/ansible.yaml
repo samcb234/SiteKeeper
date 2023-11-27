@@ -1,0 +1,54 @@
+---
+
+- name: Run the test playbook
+  hosts: deploy_server # see hosts file
+  remote_user: jenkins
+  gather_facts: true
+  tasks:
+    - name: Get the username running this playbook
+      command: whoami
+      register: username_on_the_host
+
+    - name: Display the User name to check we are in the right box
+      ansible.builtin.debug:
+        msg: "Hello User {{ username_on_the_host.stdout }} from Jenkins and Ansible!!"
+
+    - name: Copy app jar files
+      copy:
+        src: "{{ item }}"
+        dest: ./ansible/
+      with_fileglob:
+        - "/var/jenkins_home/workspace/SiteKeeper-Releases/site-keeper-backend/target/*-exec.jar"
+
+    - name: Copy Docker image file generator
+      copy:
+        src: /var/jenkins_home/workspace/SiteKeeper-Releases/site-keeper-backend/target/docker/Dockerfile
+        dest: ./ansible/
+
+    - name: Copy Docker compose generator
+      copy:
+        src: /var/jenkins_home/workspace/SiteKeeper-Releases/site-keeper-backend/target/docker/docker-compose-prod.yaml
+        dest: ./ansible/docker-compose.yaml
+
+    - debug: var=ansible_date_time
+    - debug: msg="the current date is {{ ansible_date_time.date }}"
+
+    - name: Run MYSQL backup
+      shell:
+        cmd: "docker exec db /usr/bin/mysqldump -u root --password=password siteKeeperApp_prod > /home/jenkins/backups/pre-install-backup-sitekeeper_prod-{{ ansible_date_time.date }}-{{ ansible_date_time.time }}.sql"
+        chdir: "/home/jenkins/ansible"
+
+    - name: Build new docker image with latest app
+      shell:
+        cmd: "docker build -t sitekeeper_app ."
+        chdir: "/home/jenkins/ansible"
+
+    - name: Bring down current containers using compose
+      shell:
+        cmd: "docker compose down"
+        chdir: "/home/jenkins/ansible"
+
+    - name: Bring up current containers using compose
+      shell:
+        cmd: "docker compose up -d"
+        chdir: "/home/jenkins/ansible"

@@ -1,0 +1,47 @@
+version: '4'
+services:
+  db:
+    image: mysql:8.0.30
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      -  mysqldata:/var/lib/mysql
+    networks:
+      -  sk_net
+    ports:
+      - "3307:3306"
+    restart: no
+
+  mailcatcher:
+    image: dockage/mailcatcher
+    ports:
+      - "1080:1080"
+      - "1025:1025"
+
+  sitekeeper_app:
+    image: sitekeeper_app
+    build: .
+    environment:
+      spring.profiles.active: dev
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/siteKeeperApp2?createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: password
+      SPRING_DATASOURCE_NAME: siteKeeperApp2
+      SPRING_DATASOURCE_ROOT_PASSWORD: password
+#      cors.allowed.url: ${cors.allowed.url}
+#      REACT_APP_API_URL: ${cors.allowed.url}
+    networks:
+      - sk_net
+    ports:
+      - "443:8443"
+    depends_on:
+      - db
+      - mailcatcher
+    restart: no
+
+volumes:
+  mysqldata:
+
+networks:
+  sk_net:
+    external: true

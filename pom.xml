@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.igt.site-keeper</groupId>
+  <artifactId>site-keeper</artifactId>
+  <packaging>pom</packaging>
+  <version>1.0.8-SNAPSHOT</version>
+
+  <name>The Site-Keeper project</name>
+
+  <modules>
+    <module>site-keeper-frontend</module>
+    <module>site-keeper-backend</module>
+    <module>site-keeper-data-access</module>
+    <module>site-keeper-services</module>
+  </modules>
+
+  <properties>
+    <java.version>17</java.version>
+    <maven.compiler.source>17</maven.compiler.source>
+    <maven.compiler.target>17</maven.compiler.target>
+  </properties>
+
+  <build>
+    <pluginManagement>
+      <plugins>
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-compiler-plugin</artifactId>
+          <version>3.7.0</version>
+          <configuration>
+            <fork>true</fork>
+            <showDeprecation>true</showDeprecation>
+            <showWarnings>true</showWarnings>
+            <compilerVersion>${java.version}</compilerVersion>
+            <source>17</source>
+            <target>17</target>
+          </configuration>
+        </plugin>
+        <plugin>
+          <groupId>external.atlassian.jgitflow</groupId>
+          <artifactId>jgitflow-maven-plugin</artifactId>
+          <version>1.0-m5.1</version>
+          <configuration>
+            <!-- Enable this to push to origin using SSH keys -->
+            <enableSshAgent>false</enableSshAgent>
+            <!-- Keep your maven submodules at the same version as the parent POM -->
+            <autoVersionSubmodules>true</autoVersionSubmodules>
+            <pushFeatures>false</pushFeatures>
+            <!--
+              This allows the CI server (e.g. Jenkins) to automatically push new releases to
+              origin; you can then either manually deploy them or, if you are doing Continuous
+              Deployments, auto-deploy them to prod
+            -->
+            <pushReleases>false</pushReleases>
+            <pushHotfixes>false</pushHotfixes>
+            <noDeploy>true</noDeploy>
+            <flowInitContext>
+              <masterBranchName>main</masterBranchName>
+              <developBranchName>develop</developBranchName>
+              <featureBranchPrefix>feature/</featureBranchPrefix>
+              <releaseBranchPrefix>release/</releaseBranchPrefix>
+              <hotfixBranchPrefix>hotfix/</hotfixBranchPrefix>
+            </flowInitContext>
+
+            <localOnly>true</localOnly>
+          </configuration>
+
+        </plugin>
+      </plugins>
+    </pluginManagement>
+  </build>
+
+<!--  <pluginRepositories>-->
+<!--    <pluginRepository>-->
+<!--      <id>gtech-public</id>-->
+<!--      <url>https://xxmaven.gtk.gtech.com/content/groups/public</url>-->
+<!--    </pluginRepository>-->
+<!--  </pluginRepositories>-->
+
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>com.igt.site-keeper</groupId>
+        <artifactId>site-keeper-backend</artifactId>
+        <version>${project.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.tomcat</groupId>
+        <artifactId>tomcat-servlet-api</artifactId>
+        <version>8.0.27</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+
+  <repositories>
+    <repository>
+      <id>nexus</id>
+      <url>https://xxmaven/content/groups/public</url>
+    </repository>
+    <repository>
+      <id>gtech-public</id>
+      <url>http://xxmaven/content/repositories/ric-openretail-release</url>
+      <releases>
+        <enabled>true</enabled>
+        <updatePolicy>daily</updatePolicy>
+        <checksumPolicy>fail</checksumPolicy>
+      </releases>
+      <snapshots>
+        <enabled>false</enabled>
+      </snapshots>
+    </repository>
+    <repository>
+      <id>gtech-snapshots</id>
+      <url>https://xxmaven/content/repositories/gtech-snapshots</url>
+      <releases>
+        <enabled>false</enabled>
+      </releases>
+      <snapshots>
+        <enabled>true</enabled>
+        <updatePolicy>daily</updatePolicy>
+        <checksumPolicy>fail</checksumPolicy>
+      </snapshots>
+    </repository>
+  </repositories>
+
+</project>

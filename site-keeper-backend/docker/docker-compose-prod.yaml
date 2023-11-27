@@ -1,0 +1,41 @@
+version: '4'
+services:
+  db:
+    image: mysql:8.0.30
+    container_name: db
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    volumes:
+      -  mysqldata:/var/lib/mysql
+    networks:
+      -  sk_net
+    ports:
+      - "3306:3306"
+    restart: no
+
+  sitekeeper_app:
+    image: sitekeeper_app
+    container_name: sitekeeper_app
+    build: .
+    environment:
+      spring.profiles.active: prod
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/siteKeeperApp_prod?createDatabaseIfNotExist=true
+      SPRING_DATASOURCE_USERNAME: sitekeeper
+      SPRING_DATASOURCE_PASSWORD: test1234@
+      SPRING_DATASOURCE_NAME: siteKeeperApp_prod
+      cors.allowed.url: ${cors.allowed.url}
+      REACT_APP_API_URL: ${cors.allowed.url}
+    networks:
+      - sk_net
+    ports:
+      - "443:443"
+    depends_on:
+      - db
+    restart: always
+
+volumes:
+  mysqldata:
+
+networks:
+  sk_net:
+    external: true

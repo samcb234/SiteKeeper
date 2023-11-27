@@ -1,0 +1,24 @@
+server:
+  port: 443
+  servlet:
+    context-path: /
+  ssl:
+    enabled: true
+    key-alias: tomcat1
+    key-store: classpath:keystore.jks
+    key-store-password: password
+    keyStoreType: JCEKS
+spring:
+  security:
+    saml2:
+      relyingparty:
+        registration:
+          okta:
+            identityprovider:
+              verification:
+                credentials:
+                  - certificate-location: "classpath:okta.cert"
+              entity-id: http://www.okta.com/exkcujn1ppAncYSff5d7
+              singlesignon:
+                sign-request: false
+                url: https://dev-11412039.okta.com/app/dev-11412039_sk_1/exkcujn1ppAncYSff5d7/sso/saml

@@ -1,0 +1,21 @@
+.marks{
+    border: 1px solid #f69999;
+    width: 10px;
+    height: 5px;
+    float:left;
+  }
+  
+  .marked {
+    background-color: black;
+  }
+  
+  .unmarked {
+    background-color: white;
+  }
+
+  .space {
+    width: 10px;
+    float:left;
+    background-color: white;
+    height: 5px;
+  }

@@ -1,0 +1,89 @@
+/* This should go in another file, TODO*/
+.display-notification {
+    top: 40px;
+    right: -65px;
+    width: 300px;
+    height: 0px;
+    background: rgba(204, 204, 204, 0);
+    z-index: 99999;
+    border: 0px;
+}
+
+.notification-toast {
+    margin: 10px;
+    padding: 0 0 10px;
+    float: right;
+    margin-right: 160px;
+}
+
+.toast-button {
+    font-size: 12px;
+}
+
+.toast-button-container {
+    text-align: right;
+    padding-right: 20px;
+}
+
+.display-notification-line {
+    padding:0 0 0px;
+    background: rgba(0, 0, 0, 0);
+}
+
+.notification-badge-container {
+    position: absolute;
+}
+
+.notification-badge {
+    top: 40px;
+    right: -12px;
+}
+
+nav {
+    border-radius: 0 0 25px 25px;
+}
+
+.userIcon {
+    margin-top: 8px;
+}
+
+.menu-sk {
+    font-size: 13px;
+}
+
+.dropdown-menu-sk {
+    background-color: #f2f2f2;
+}
+
+.login-button {
+}
+
+.breadcrumb-active,.breadcrumb-not-active {
+    color: #fff;
+}
+
+.breadcrumb-active:hover, .breadcrumb-not-active:hover {
+    text-decoration: underline;
+}
+
+.push-right {
+    float: right;
+}
+
+.user-menu-icon {
+    color: #d2a412;
+    height: 35px !important;
+    width: 35px !important;
+    text-shadow: 0 0 2px #000; /* horizontal-offset vertical-offset 'blur' colour */
+    -moz-text-shadow: 0 0 2px #000;
+    -webkit-text-shadow: 0 0 2px #000;
+}
+
+.logout-icon {
+    color: #ff2c2c;
+    height: 35px !important;
+    width: 35px !important;
+    text-shadow: 0 0 2px #000; /* horizontal-offset vertical-offset 'blur' colour */
+    -moz-text-shadow: 0 0 2px #000;
+    -webkit-text-shadow: 0 0 2px #000;
+}

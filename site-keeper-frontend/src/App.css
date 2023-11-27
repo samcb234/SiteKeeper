@@ -1,0 +1,268 @@
+.mt-8 {
+    margin-top: 8px;
+}
+
+.mt-16 {
+    margin-top: 16px;
+}
+
+.mt-24 {
+    margin-top: 16px;
+}
+.container-admin{
+    height: max-content;
+    width: 100%;
+    border-radius: 25px;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+bg-orange{
+    color: #FFD580;
+}
+a{
+    text-decoration: none;
+}
+
+.ml-100{
+    margin-left: 100px;
+}
+
+.dropdown-toggle:after {
+    display: none;
+}
+
+.dropdown-menu {
+    display: none;
+}
+
+.dropdown:hover .dropdown-menu:hover {
+    display: block;
+}
+.ml-20{
+    margin-left: 13px;
+}
+.mr-20{
+    margin-right: 27px;
+}
+
+#slipId{
+    display:flex;
+    justify-content: center;
+    width: 200px;
+}
+
+.tableRow{
+    color: white;
+}
+
+.tableRow:hover{
+    color: black;
+}
+
+#btnSave,
+#btnCancel{
+    display: inline-block;
+    vertical-align: top;
+    width: 100px;
+    border-radius: 20px;
+}
+
+#editInput{
+    border-color: #ffb841;
+    border-radius: 30px;
+    border-width: 3px;
+}
+#btnCancel{
+
+    border-color: #FF7F50;
+    background-color: white;
+    color:black;
+}
+
+
+#btnSave{
+    background-color: #FF7F50;
+    border: none;
+}
+#siteCard{
+    background-color: #FFD580;
+}
+#dropdownSelect{
+    background-color: #FF7F50 ;
+    border:none;
+}
+.form-control-modal {
+    width: 100%;
+border-radius: 10px;
+    border-color: #ffb841;
+    border-width: 3px;
+
+}
+
+.app-version {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 12px;
+}
+
+.modal-size {
+    position: absolute;
+    width: 50%;
+    height: 60%;
+
+    border-radius: 10px;
+    outline: none;
+    padding: 3%;
+
+    background-color: #FF7F50;
+    color: white;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+
+    transform: translate(-50%, -50%);
+}
+
+.admin-dropdown{
+    container:flex;
+    background-color: floralwhite;
+    width:max-content;
+}
+
+.modal-upload{
+    position: absolute;
+    width: 50%;
+    height: 40%;
+
+    border-radius: 15px;
+    outline: none;
+    padding: 3%;
+
+    background-color: #FF7F50;
+    color: white;
+    top: 50%;
+    left: 50%;
+    right: auto;
+    bottom: auto;
+
+    transform: translate(-50%, -50%);
+}
+
+/* This should be in a specific file :)*/
+/*Select all th elements under .bom-display class...*/
+.bom-display th {
+    background-color: #0d6efd;
+    font-weight: bold;
+    text-align: center;
+    border: 0px;
+}
+
+/*Select all first child tr elements under .bom-display class...*/
+.bom-display tr:first-child {
+    border-top: 0px;
+}
+
+/*Select all first child td elements under .bom-display class that are tr...*/
+.bom-display tr td:first-child {
+    background-color: #0d6efd;
+    font-weight: bold;
+    text-align: center;
+}
+
+/*Select first child th elements under .bom-display class...*/
+.bom-display th:first-child{
+    border-top-left-radius: 10px;
+}
+
+/*Select last child th elements under .bom-display class...*/
+.bom-display th:last-child{
+    border-top-right-radius: 10px;
+}
+
+.overflow-table{
+    height: 500px;
+    overflow:auto;
+}
+
+.overflow-table2{
+    height: 500px;
+    overflow-x:auto;
+    overflow-y: auto;
+}
+.overflow-table3{
+    height: 300px;
+    overflow:auto;
+}
+
+
+.highlight{
+    display: inline-block;
+    padding: .25em 0;
+    background: #FFC107;
+    color: #ffffff;
+}
+
+.title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.logo {
+    max-width: 100%;
+}
+
+.logo-container {
+    border: 1px black solid;
+    border-radius: 15px;
+    transition: transform 250ms;
+    background-color: #fff;
+}
+
+.logo-container:hover {
+    transform: translateY(-7px);
+    background-color: #f3f3f3;
+}
+
+.site-name {
+    font-weight: bolder;
+}
+
+.loading-icon {
+    -webkit-animation:spin 4s linear infinite;
+    -moz-animation:spin 4s linear infinite;
+    animation:spin 4s linear infinite;
+}
+@-moz-keyframes spin {
+    100% { -moz-transform: rotate(360deg); }
+}
+@-webkit-keyframes spin {
+    100% { -webkit-transform: rotate(360deg); }
+}
+@keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform:rotate(360deg);
+    }
+}
+
+.btn-excel {
+    background-color: #10793F;
+    border: #10793F;
+    color: #fff;
+    font-size: 12px;
+    height: 35px;
+    border: 1px solid;
+}
+
+.btn-excel:hover {
+    background-color: #21A366;
+}
+
+.btn:disabled {
+    background-color: #a2a2a2;
+    border: 1px solid;
+}

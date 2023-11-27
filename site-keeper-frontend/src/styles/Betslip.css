@@ -1,0 +1,11 @@
+.not-active{
+    color: red;
+}
+
+.active {
+    color: green;
+}
+
+.MuiDataGrid-columnHeaderTitle{
+    font-weight: bold;
+}
